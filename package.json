@@ -1,0 +1,25 @@
+{
+  "name": "react-native-flanimatedimage",
+  "version": "1.0.0",
+  "description": "Bridge of FLAnimatedImage to react-native",
+  "main": "FLAnimatedImage.ios.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/browniefed/react-native-flanimatedimage.git"
+  },
+  "keywords": [
+    "react-native",
+    "animated",
+    "gif",
+    "FLAnimatedImage"
+  ],
+  "author": "Jason Brown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/browniefed/react-native-flanimatedimage/issues"
+  },
+  "homepage": "https://github.com/browniefed/react-native-flanimatedimage#readme"
+}

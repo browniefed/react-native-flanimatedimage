@@ -30,9 +30,32 @@
   if ((self = [super init])) {
     _eventDispatcher = eventDispatcher;
     _imageView = [[FLAnimatedImageView alloc] init];
+    
+    [_imageView addObserver:self forKeyPath:@"currentFrameIndex" options:0 context:nil];
   }
     
     return self;
+}
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+  if (object == _imageView) {
+    if ([keyPath isEqualToString:@"currentFrameIndex"]) {
+      [_eventDispatcher sendInputEventWithName:@"onFrameChange" body:@{
+                                                                       @"currentFrameIndex":[NSNumber numberWithUnsignedInteger:[object currentFrameIndex]],
+                                                                       @"frameCount": [NSNumber numberWithUnsignedInteger:[_image frameCount]],
+                                                                       @"target": self.reactTag
+                                                                       }];
+    }
+  }
+}
+
+- (void)removeFromSuperview
+{
+
+  [_imageView removeObserver:self forKeyPath:@"currentFrameIndex"];
+  _eventDispatcher = nil;
+  [super removeFromSuperview];
 }
 
 -(void)reloadImage {

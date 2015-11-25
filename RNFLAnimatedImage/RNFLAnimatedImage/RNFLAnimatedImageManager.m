@@ -21,6 +21,12 @@ RCT_EXPORT_MODULE();
   return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_VIEW_PROPERTY(src, NSString)
+RCT_EXPORT_VIEW_PROPERTY(src, NSString);
+
+- (NSArray *) customDirectEventTypes {
+  return @[
+           @"onFrameChange"
+          ];
+}
 
 @end

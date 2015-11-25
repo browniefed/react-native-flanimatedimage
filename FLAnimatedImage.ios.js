@@ -3,7 +3,8 @@ var { requireNativeComponent, PropTypes, NativeModules } = React;
 
 var FLAnimatedImage = React.createClass({
   propTypes: {
-    src: PropTypes.string
+    src: PropTypes.string,
+    onFrameChange: PropTypes.func
   },
   render() {
     return <RNFLAnimatedImage {...this.props} />;

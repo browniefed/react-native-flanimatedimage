@@ -26,7 +26,6 @@
 
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher
 {
-
   if ((self = [super init])) {
     _eventDispatcher = eventDispatcher;
     _imageView = [[FLAnimatedImageView alloc] init];
@@ -60,6 +59,7 @@
 
 -(void)reloadImage {
   _image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_src]]];
+  _imageView.contentMode = [_contentMode integerValue];
   _imageView.animatedImage = _image;
 
 }
@@ -74,6 +74,14 @@
 {
   if (![src isEqual:_src]) {
     _src = [src copy];
+    [self reloadImage];
+  }
+}
+
+- (void)setContentMode:(NSNumber *)contentMode
+{
+  if(![contentMode isEqual:_contentMode]) {
+    _contentMode = [contentMode copy];
     [self reloadImage];
   }
 }

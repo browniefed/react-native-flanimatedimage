@@ -18,6 +18,7 @@
 @interface RNFLAnimatedImage : UIView
 
 @property (nonatomic, assign) NSString *src;
+@property (nonatomic, assign) NSNumber *contentMode;
 
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher NS_DESIGNATED_INITIALIZER;
 

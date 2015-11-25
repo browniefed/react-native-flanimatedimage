@@ -3,7 +3,6 @@
 #import "RNFLAnimatedImageManager.h"
 #import "RNFLAnimatedImage.h"
 
-
 @implementation RNFLAnimatedImageManager
 
 RCT_EXPORT_MODULE();
@@ -22,11 +21,21 @@ RCT_EXPORT_MODULE();
 }
 
 RCT_EXPORT_VIEW_PROPERTY(src, NSString);
+RCT_EXPORT_VIEW_PROPERTY(contentMode, NSNumber);
+
 
 - (NSArray *) customDirectEventTypes {
   return @[
            @"onFrameChange"
           ];
+}
+
+- (NSDictionary *) constantsToExport {
+  return @{
+           @"ScaleAspectFit": @(UIViewContentModeScaleAspectFit),
+           @"ScaleAspectFill": @(UIViewContentModeScaleAspectFill),
+           @"ScaleToFill": @(UIViewContentModeScaleToFill)
+          };
 }
 
 @end
